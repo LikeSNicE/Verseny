@@ -1,0 +1,10 @@
+.BoxLinks{
+  &Item{
+    & + & {
+      margin-left: 30px;
+    }
+  }
+  &ItemActive{
+    border-bottom: 2px solid #000;
+  }
+}
