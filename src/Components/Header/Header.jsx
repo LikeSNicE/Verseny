@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import HomeIcon from "@mui/icons-material/Home";
 import { display } from '@mui/system';
+import Logo from '../../assets/images/header/logo.svg';
 
 const ToolBarStyled = styled(Toolbar)({
   background: '#fff',
@@ -35,17 +36,14 @@ const Header = () => {
     <Box>
       <AppBar
         position="static"
-        sx={
-          {
-            // display: 'flex',
-            // justifyContent: 'space-between',
-            // alignItems: 'center'
-          }
-        }
+
       >
         <ToolBarStyled>
           <IconButton>
-            <CampaignIcon />
+            {/* <CampaignIcon /> */}
+            <Avatar src={Logo}>
+
+            </Avatar>
           </IconButton>
 
           <BoxLinks className={styles.BoxLinks}>

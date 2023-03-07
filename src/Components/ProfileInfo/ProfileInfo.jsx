@@ -18,6 +18,7 @@ import {
   Radio,
   Tabs,
   Tab,
+  styled,
 } from "@mui/material";
 import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
@@ -27,28 +28,65 @@ import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 
+const BoxMainStyled = styled(Box)({
+  display: "flex",
+  justifyContent: "space-between",
+  mt: "20px",
+  
+});
+
+const BoxMainLeft = styled(Box)({
+  width: "300px",
+  padding: "30px",
+  background: "#F9F9F9",
+  borderRadius: "10px",
+});
+
+const BoxMainRight = styled(Box)({
+  width: "850px",
+  borderRadius: "10px",
+  background: '',
+  marginLeft: '15px'
+});
+
+const BoxMainRightTop = styled(Box)({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  background: "#F9F9F9",
+  padding: "40px 15px",
+  borderRadius: "10px",
+  marginBottom: "15px",
+  rowGap: '20px'
+});
+
+const BoxMainRightBottom = styled(Box)({
+  marginTop: "15px",
+  background: "#F9F9F9",
+  padding: "30px 25px",
+});
+
+const TypographySearch = styled(Typography)({
+  fontSize: '16px',
+  margin: '15px 0'
+})
+
 const ProfileInfo = () => {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
+};
+
 
   return (
-    <Box
+    <BoxMainStyled
       sx={{
         display: "flex",
         justifyContent: "space-between",
         mt: "20px",
       }}
     >
-      <Box
-        sx={{
-          width: "300px",
-          padding: "30px",
-          background: "#F9F9F9",
-          borderRadius: "20px",
-        }}
-      >
+      <BoxMainLeft>
         <Avatar
           src="https://i.pinimg.com/originals/90/09/79/900979ebb3fe7ed2b6c0436a67ef02c3.jpg"
           variant="square"
@@ -59,30 +97,29 @@ const ProfileInfo = () => {
             mb: "10px",
           }}
         ></Avatar>
-        {/* <TextField
-          sx={{
-            background: tagsColors.four,
-            mb: "40px",
-          }}
-        >
-          <EditIcon />
-        </TextField> */}
+
         <Button
           variant="contained"
           component="label"
           sx={{
             background: tagsColors.four,
             mb: "40px",
-            
           }}
         >
           <EditIcon />
           <input type="file" hidden />
         </Button>
 
-        <Typography variant="h6" component="div">
+        <TypographySearch
+          sx={{
+            fontSize: "22px",
+            fontWeight: "bold",
+          }}
+          variant="h6"
+          component="div"
+        >
           Личная Информация
-        </Typography>
+        </TypographySearch>
 
         <Divider />
 
@@ -112,25 +149,10 @@ const ProfileInfo = () => {
             <ListItemText primary="Почта : bekkozha.ayan@mail.ru" />
           </ListItem>
         </List>
-      </Box>
+      </BoxMainLeft>
 
-      <Box
-        sx={{
-          width: "850px",
-          ml: "35px",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            background: "#F9F9F9",
-            padding: "40px 15px",
-            borderRadius: "10px",
-            mb: "15px",
-          }}
-        >
+      <BoxMainRight>
+        <BoxMainRightTop>
           <Box>
             <Typography
               sx={{
@@ -143,7 +165,7 @@ const ProfileInfo = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: "16px",
                 fontWeight: "400",
                 color: "#4A4A4E",
               }}
@@ -152,7 +174,7 @@ const ProfileInfo = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: "16px",
                 fontWeight: "400",
                 color: "#4A4A4E",
               }}
@@ -160,6 +182,7 @@ const ProfileInfo = () => {
               Роль: Организатор
             </Typography>
           </Box>
+
           <Box>
             <Button
               startIcon={<ExitToAppIcon />}
@@ -175,9 +198,9 @@ const ProfileInfo = () => {
               Выйти
             </Button>
           </Box>
-        </Box>
+        </BoxMainRightTop>
 
-        <Box>
+        <BoxMainRightBottom>
           <Box
             sx={{
               display: "flex",
@@ -196,7 +219,7 @@ const ProfileInfo = () => {
               Настроика аккаунта
             </Typography>
           </Box>
-          <Divider />
+          <Divider sx={{ background: "#5461A4" }} />
 
           <Tabs
             value={value}
@@ -217,19 +240,19 @@ const ProfileInfo = () => {
             />
           </Tabs>
 
-          <Typography variant="h6" component={"div"}>
+          <TypographySearch variant="h6" component={"div"}>
             Имя
-          </Typography>
+          </TypographySearch>
           <TextField fullWidth type="search" placeholder="Имя"></TextField>
 
-          <Typography variant="h6" component={"div"}>
+          <TypographySearch variant="h6" component={"div"}>
             Фамилия
-          </Typography>
+          </TypographySearch>
           <TextField fullWidth type="search" placeholder="Фамилия"></TextField>
 
-          <Typography variant="h6" component={"div"}>
+          <TypographySearch variant="h6" component={"div"}>
             Почта
-          </Typography>
+          </TypographySearch>
           <TextField fullWidth type="search" placeholder="Почта"></TextField>
 
           <FormControl
@@ -249,6 +272,9 @@ const ProfileInfo = () => {
                 value="Женский"
                 control={<Radio />}
                 label="Женский"
+                sx={{
+                  color: "#696969",
+                }}
               />
               <FormControlLabel
                 value="Мужской"
@@ -257,9 +283,23 @@ const ProfileInfo = () => {
               />
             </RadioGroup>
           </FormControl>
-        </Box>
-      </Box>
-    </Box>
+
+          <Button
+            variant="contained"
+            sx={{
+              display: "block",
+              mt: "10px",
+              background: "#9294C9",
+              "&:hover": {
+                background: "#9294C9",
+              },
+            }}
+          >
+            Редактировать
+          </Button>
+        </BoxMainRightBottom>
+      </BoxMainRight>
+    </BoxMainStyled>
   );
 };
 
